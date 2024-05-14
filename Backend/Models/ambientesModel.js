@@ -39,7 +39,8 @@ const AmbienteModel = database.define('Ambientes', {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-    },    
+    },  
+ 
 });
 
 module.exports = AmbienteModel;

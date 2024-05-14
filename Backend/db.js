@@ -11,7 +11,12 @@ const banco = new Sequelize(dbName, dbUser, dbPassword, {
   //passar os dados para o sequelize
   dialect: "mssql", //informar o tipo de banco que vamos utilizar
   host: dbHost, //o host
-  port: process.env.PORT
+  port: process.env.PORT,
+  define: {
+    timestamps: false,
+    createdAt: false,  
+    updatedAt: false, 
+  },
 });
 
 

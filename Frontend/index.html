@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambiente Management</title>
+</head>
+<body>
+    <h1>Ambiente Management</h1>
+
+    <!-- Área para buscar ambiente por ID -->
+    <h2>Get Ambiente by ID</h2>
+    <form id="getAmbienteByIdForm">
+        <input type="number" id="ambienteId" placeholder="ID do Ambiente" required>
+        <button type="submit">Get Ambiente</button>
+    </form>
+
+    <!-- Área para listar ambientes -->
+    <h2>List of Ambientes</h2>
+    <div id="ambientesList"></div>
+
+    <!-- Área para mostrar a resposta de um único ambiente -->
+    <h2>Ambiente Details</h2>
+    <div id="ambienteDetails"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

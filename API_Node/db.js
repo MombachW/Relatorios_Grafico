@@ -19,5 +19,4 @@ const banco = new Sequelize(dbName, dbUser, dbPassword, {
   },
 });
 
-
 module.exports = banco; //exportar

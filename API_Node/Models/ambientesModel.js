@@ -31,8 +31,11 @@ const AmbienteModel = database.define('Ambientes', {
         type: Sequelize.FLOAT,
         allowNull: false,
     },
-    Data_Hora:{
-        type: Sequelize.STRING(30),
+    Data_Inserido:{
+        type: Sequelize.STRING(10),
+    },
+    Hora:{
+        type: Sequelize.STRING(10),
     },
     ID_Amb:{
         type: Sequelize.INTEGER,

@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambiente Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Ambiente Management</h1>
 
-    <!-- Área para buscar ambiente por ID -->
-    <h2>Get Ambiente by ID</h2>
-    <form id="getAmbienteByIdForm">
-        <input type="number" id="ambienteId" placeholder="ID do Ambiente" required>
-        <button type="submit">Get Ambiente</button>
-    </form>
+
+    <form id="filterForm">
+        <label for="idInput">ID do Ambiente:</label>
+        <input type="text" id="idInput" name="id" value="" required>
+        <label for="dateInput">Data (DD/MM/YYYY):</label>
+        <input type="text" id="dateInput" name="data" value="" required>
+        <button type="submit">Buscar</button>
+    </form> 
+
+    <div>
+        <canvas id="ambientesChart" width="300" height="200"></canvas>
+    </div>
 
     <!-- Área para listar ambientes -->
     <h2>List of Ambientes</h2>
@@ -23,6 +30,11 @@
     <h2>Ambiente Details</h2>
     <div id="ambienteDetails"></div>
 
-    <script src="app.js"></script>
+    <div>
+        <button onclick="generatePdf()">Gerar</button>
+    </div>
+
+    <script src="js/main.js"></script>
+
 </body>
 </html>

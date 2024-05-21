@@ -9,6 +9,8 @@ const ambientesRoute = require('./Routes/ambientesRoutes');
 const multimedidoresRoute = require('./Routes/multimedidoresRoutes');
 const totalizadoresRoute = require('./Routes/totalizadoresRoutes');
 
+const pfdRoute = require('./Routes/pdfRoutes');
+
 const app = express();
 
 app.use(express.json());
@@ -17,6 +19,7 @@ app.use(cors());
 app.use("/", ambientesRoute);
 app.use("/", multimedidoresRoute);
 app.use("/", totalizadoresRoute);
+app.use("/", pfdRoute);
 
 //db.authenticate(() => console.log(`Banco de dados conectado: ${process.env.DB_NAME}`));
 

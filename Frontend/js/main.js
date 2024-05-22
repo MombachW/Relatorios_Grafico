@@ -1,7 +1,7 @@
 document.getElementById('filterForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const id = document.getElementById('idInput').value;
-    const data = document.getElementById('dateInput').value;
+    const id = document.getElementById('nome').value;
+    const data = document.getElementById('data').value;
     fetchAmbientesData(id, data);
 });
 
@@ -48,11 +48,12 @@ function initializeChart() {
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     x: {
                         title: {
                             display: true,
-                            text: 'Hora'
+                            text: 'Horario'
                         }
                     },
                     y: {
@@ -69,7 +70,7 @@ function initializeChart() {
 
 // chamar dados pelo id e data
 function fetchAmbientesData(id, data) {
-    const url = `http://localhost:3000/Ambientes/${id}?data=${encodeURIComponent(data)}`;
+    const url = `http://localhost:3000/Ambientes/Filtro/${id}?data=${encodeURIComponent(data)}`;
 
     fetch(url)
         .then(response => response.json())
@@ -82,12 +83,11 @@ function fetchAmbientesData(id, data) {
                     Data: ${amb.Data_Inserido} 
                     Hora: ${amb.Hora}
                 </li>`).join('');
-            document.getElementById('ambientesList').innerHTML = `<ul>${ambientes}</ul>`;
+            //document.getElementById('ambientesList').innerHTML = `<ul>${ambientes}</ul>`;
 
             updateChartData(chart, data);
         })
         .catch(error => {
-            document.getElementById('ambientesList').innerText = 'Erro ao buscar ambientes: ' + error;
             console.error(error);
         });
 }

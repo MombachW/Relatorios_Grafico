@@ -1,3 +1,8 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .frame {
     background-color: #c0c0c0;
     display: flex;
@@ -8,14 +13,14 @@
   
   .frame .div {
     background-color: #c0c0c0;
-    width: 1920px;
-    height: 918px;
-    position: relative;
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
   
-  .frame .overlap-group {
+  .frame .menu-superior {
     position: absolute;
-    width: 1920px;
+    width: 100%;
     height: 100px;
     top: 0;
     left: 0;
@@ -24,7 +29,7 @@
   
   .frame .ambientes-sala-de-m {
     position: absolute;
-    top: 19px;
+    top: center;
     left: 725px;
     font-family: "Inter-Bold", Helvetica;
     font-weight: 700;
@@ -35,7 +40,7 @@
     line-height: normal;
   }
   
-  .frame .rectangle {
+  .frame .install-logo {
     position: absolute;
     width: 279px;
     height: 66px;
@@ -52,13 +57,14 @@
     object-fit: cover;
   }
   
-  .frame .rectangle-wrapper {
+  .frame .overlap-group {
     position: absolute;
     width: 1369px;
     height: 645px;
     top: 186px;
     left: 275px;
     background-color: #d9d9d9;
+    
   }
   
   .frame .rectangle-2 {
@@ -67,10 +73,10 @@
     height: 545px;
     top: 50px;
     left: 106px;
-    background-color: #8d8989;
+    background-color: #f1f1f1;
   }
   
-  .frame .rectangle-3 {
+  .frame .campo-nome {
     position: absolute;
     width: 439px;
     height: 33px;
@@ -80,7 +86,7 @@
     border-radius: 15px;
   }
   
-  .frame .rectangle-4 {
+  .frame .campo-data {
     position: absolute;
     width: 215px;
     height: 33px;
@@ -89,8 +95,18 @@
     background-color: #d9d9d9;
     border-radius: 15px;
   }
+
+  .frame .botao-confirma {
+    position: absolute;
+    width: 83px;
+    height: 33px;
+    top: 145px;
+    left: 955px;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+  }
   
-  .frame .overlap {
+  .frame .div-wrapper {
     position: absolute;
     width: 143px;
     height: 33px;
@@ -113,11 +129,38 @@
     line-height: normal;
   }
   
-  .frame .calendario {
+  /* Estilos gerais para inputs */
+input {
+    padding: 5px 10px;
+    border: 1px solid #3F3F3F; 
+    border-radius: 5px;
+    font-family: "Inter", sans-serif; /* Ajuste conforme necessário */
+    font-size: 16px;
+}
+
+/* Estilizando o campo-nome */
+.frame .campo-nome input {
+    display: block;
+    width: calc(100% - 20px); /* Subtrai a padding para evitar overflow */
+    height: 70%;
+    margin: auto;
+    background-color: #d9d9d9;
+    color: #3F3F3F;
+}
+
+/* Estilizando o campo-data */
+.frame .campo-data input {
+    display: block;
+    width: calc(100% - 20px); /* Subtrai a padding para evitar overflow */
+    height: 70%;
+    margin: auto;
+    background-color: #d9d9d9;
+    color: #3F3F3F;
+}
+.frame .botao{
     position: absolute;
-    width: 36px;
-    height: 28px;
-    top: 147px;
-    left: 942px;
-  }
-  
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    width: 83px;
+    height: 35px;
+}

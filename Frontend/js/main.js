@@ -19,29 +19,29 @@ function initializeChart() {
                     {
                         label: 'PV Temp',
                         data: [],
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(0, 255, 0, 1)',
+                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
                         fill: false,
                     },
                     {
                         label: 'SP Temp',
                         data: [],
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(255,102,0, 1)',
+                        backgroundColor: 'rgba(255,102,0, 0.2)',
                         fill: false,
                     },
                     {
                         label: 'PV Umi',
                         data: [],
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(0, 212, 2, 1)',
+                        backgroundColor: 'rgba(0, 212, 2, 0.2)',
                         fill: false,
                     },
                     {
                         label: 'SP Umi',
                         data: [],
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(0, 128, 128, 1)',
+                        backgroundColor: 'rgba(0, 128, 128, 0.2)',
                         fill: false,
                     },
                 ]
@@ -122,9 +122,32 @@ function getChartUrl() {
 
 //função que gera o pdf com o backend
 function generatePdf() {
+    const select = document.getElementById('nome'); // Obtém o elemento select
+    const chartName = select.options[select.selectedIndex].text;
     const chartUrl = getChartUrl();
-    window.open(`http://localhost:3000/pdf?chartUrl=${encodeURIComponent(chartUrl)}`);
+    window.open(`http://localhost:3000/pdf?chartUrl=${encodeURIComponent(chartUrl)}&chartName=${encodeURIComponent(chartName)}`);
 }
+
+document.getElementById('nome').addEventListener('input', function() {
+    const input = this.value;
+
+    if (input.length > 2) { // Somente pesquisar se houver mais de 2 caracteres
+        fetch(`http://localhost:3000/search?term=${encodeURIComponent(input)}`)
+            .then(response => response.json())
+            .then(data => {
+                const suggestions = document.getElementById('suggestions');
+                suggestions.innerHTML = '';
+                let dataArray = Object.values(data)
+                dataArray.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.nome;
+                    suggestions.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+});
+
 
 // Inicializa o gráfico ao carregar a página
 window.onload = initializeChart;

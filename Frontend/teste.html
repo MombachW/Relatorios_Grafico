@@ -3,40 +3,22 @@
   <head>
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="testestyle.css" />
+    <link rel="stylesheet" href="css/testestyle.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <div class="frame">
-      <div class="div">
-        <div class="menu-superior">
-          <p class="ambientes-sala-de-m">Ambientes Sala de Máquinas <br />Umidade e Temperatura</p>
-          <img class="install-logo" src="img/Logo_Install.png" />
-          <img class="friato-alimentos-sem" src="img/Friato_Alimentos.png" />
-        </div>
-        <div class="overlap-group">
-            <div class="rectangle-2">
-                <canvas id="ambientesChart"></canvas>
-            </div>
-        </div>
-        <form id="filterForm">
-            <div class="campo-nome">
-                <input type="text" id="nome" placeholder="Nome do Ambiente"/>
-            </div>
-            <div class="campo-data">
-                <input type="test" id="data" /> 
-            </div>
-            <div class="botao-confirma">
-                <button type="submit" class="botao">Buscar</button>
-            </div>
-        </form>
-        
-        
-        <div class="div-wrapper"><div class="text-wrapper">Gerar</div></div>
-      </div>
-    </div>
 
-    <script src="js/main.js"></script>
+    <input class="campo" type="text">
+    <ul class="sugestoes"></ul>
+
+    <select id=cbPais>
+      <option value="" >Select Country</option>
+      <option value="1" >Usa tes</option>
+      <option value="ca" >Canada</option>
+      <option value="me" >Mexico</option>
+  </select>
+
+    <script src="js/filtro.js"></script>
 
   </body>
 </html>

@@ -18,6 +18,7 @@
     "node-fetch": "^2.7.0",
     "nodemon": "^3.1.0",
     "pdf-lib": "^1.17.1",
+    "puppeteer": "^22.10.0",
     "sequelize": "^6.37.3",
     "tedious": "^18.2.0"
   },

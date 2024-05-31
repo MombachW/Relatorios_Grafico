@@ -1,34 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ambiente Management</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <h1>Ambiente Management</h1>
-
-
-    <form id="filterForm">
-        <label for="idInput">ID do Ambiente:</label>
-        <input type="text" id="idInput" name="id" value="" required>
-        <label for="dateInput">Data (DD/MM/YYYY):</label>
-        <input type="text" id="dateInput" name="data" value="" required>
-        <button type="submit">Buscar</button>
-    </form> 
-
-    <div>
-        <canvas id="ambientesChart" width="300" height="200"></canvas>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="div">
+        <div class="menu-superior">
+          <p class="ambientes-sala-de-m">Ambientes Sala de Máquinas <br />Umidade e Temperatura</p>
+          <img class="install-logo" src="img/Logo_Install.png" />
+          <img class="friato-alimentos-sem" src="img/Friato_Alimentos.png" />
+        </div>
+        <div class="overlap-group">
+            <div class="rectangle-2">
+                <canvas id="ambientesChart"></canvas>
+            </div>
+        </div>
+        <form id="filterForm">
+            <div class="campo-nome">
+              <select id="nome">
+                <option value="">Selecionar Ambiente</option>
+                <option value="1">Antecâmara 01 Matéria Prima</option>
+                <option value="2">Antecâmara 02 Matéria Prima</option>
+                <option value="3">Antecâmara 03 Produto Acabado</option>
+                <option value="4">Antecâmara 04 Produto Acabado</option>
+                <option value="5">Área De Preparo 01</option>
+                <option value="6">Área De Preparo 02</option>
+                <option value="7">Área Produção Empanados</option>
+                <option value="8">Área Produção Hamburguer</option>
+                <option value="9">Barreira Sanitária 01</option>
+                <option value="10">Barreira Sanitária 02</option>
+                <option value="11">Barreira Sanitária 03</option>
+                <option value="12">Barreira Sanitária 04</option>
+                <option value="13">Caldeira</option>
+                <option value="14">Câmara De Materia Prima 01</option>
+                <option value="15">Câmara De Materia Prima 02</option>
+                <option value="16">Câmara De Materia Prima 03</option>
+                <option value="17">Câmara De Resfriamento Intermediário</option>
+                <option value="18">Câmara Produto Acabado 01</option>
+                <option value="19">Câmara Produto Acabado 02</option>
+                <option value="20">Câmara Produto Acabado 03</option>
+                <option value="21">Corredor De Acesso Preparação De Massa</option>
+                <option value="22">Corredor Lateral Produto Acabado</option>
+                <option value="23">Cozinha Mezanino</option>
+                <option value="24">Depósito Embalagem Primária</option>
+                <option value="25">Depósito Embalagem Secundária</option>
+                <option value="26">Embalagem Primária Emp E Hamb</option>
+                <option value="27">Embalagem Secundária Emp E Hamb 01</option>
+                <option value="28">Embalagem Secundária Emp E Hamb 02</option>
+                <option value="29">Expedição 01 Produto Acabado</option>
+                <option value="30">Expedição 02 Produto Acabado</option>
+                <option value="31">Geradores</option>
+                <option value="32">Girofreezer 01 Jbt</option>
+                <option value="33">Girofreezer Madef</option>
+                <option value="34">Preparação De Massa 01</option>
+                <option value="35">Preparação De Massa 02</option>
+                <option value="36">Recebimento Matéria Prima 01</option>
+                <option value="37">Refeitório Colorido</option>
+                <option value="38">Refeitório Visitantes</option>
+                <option value="39">Retirada De Resíduos</option>
+                <option value="40">Sala De Descanso 01</option>
+                <option value="41">Sala De Descanso 02</option>
+                <option value="42">Sala De Descanso 03</option>
+                <option value="43">Sala De Descanso 04</option>
+                <option value="44">Sala De Máquinas</option>
+                <option value="45">Sala De Paineis 01</option>
+                <option value="46">Sala De Paineis 02</option>
+                <option value="47">Sala De Paineis 03</option>
+                <option value="48">Subestação</option>
+                <option value="999">Teste</option>
+            </select>
+            
+            </div>
+            <div class="campo-data">
+                <input type="date" id="data" /> 
+            </div>
+            <div class="botao-confirma">
+                <button type="submit" class="botao">Buscar</button>
+            </div>
+        </form>
+        
+        
+        <div class="div-wrapper">
+          <div class="text-wrapper">
+            <button class="gerarPdf" onclick="generatePdf()">PDF</button>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Área para listar ambientes -->
-    <h2>List of Ambientes</h2>
-    <div id="ambientesList"></div>
-
-
 
     <script src="js/main.js"></script>
 
-</body>
+  </body>
 </html>

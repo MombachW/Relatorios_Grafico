@@ -1,3 +1,5 @@
+
+
 document.getElementById('filterForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const id = document.getElementById('nome').value;
@@ -83,7 +85,6 @@ function fetchAmbientesData(id, data) {
                     Data: ${amb.Data_Inserido} 
                     Hora: ${amb.Hora}
                 </li>`).join('');
-            //document.getElementById('ambientesList').innerHTML = `<ul>${ambientes}</ul>`;
 
             updateChartData(chart, data);
         })

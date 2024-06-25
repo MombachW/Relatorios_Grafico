@@ -129,26 +129,17 @@ function generatePdf() {
     window.open(`http://localhost:3000/pdf?chartUrl=${encodeURIComponent(chartUrl)}&chartName=${encodeURIComponent(chartName)}`);
 }
 
-document.getElementById('nome').addEventListener('input', function() {
-    const input = this.value;
-
-    if (input.length > 2) { // Somente pesquisar se houver mais de 2 caracteres
-        fetch(`http://localhost:3000/search?term=${encodeURIComponent(input)}`)
-            .then(response => response.json())
-            .then(data => {
-                const suggestions = document.getElementById('suggestions');
-                suggestions.innerHTML = '';
-                let dataArray = Object.values(data)
-                dataArray.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item.nome;
-                    suggestions.appendChild(li);
-                });
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }
-});
+function download(){
+    const imageLink = document.createElement('a');
+    const canvas = document.getElementById('ambientesChart');
+    imageLink.download = 'Grafico.png';
+    imageLink.href = canvas.toDataURL('image/png', 1);
+    imageLink.click();
+    //window.open(imageLink);
+    //document.write('<img src= " ' +imageLink+ ' "/>');
+    //console.log(imageLink.href);
 
 
+}
 // Inicializa o gráfico ao carregar a página
 window.onload = initializeChart;

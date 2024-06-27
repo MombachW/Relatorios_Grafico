@@ -6,7 +6,11 @@
     <title>Relatórios</title>
 
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./node_modules/chart.js/dist/chart.umd.js"></script>
+    <script src="./node_modules/jspdf/dist/jspdf.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" 
+    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+
   </head>
   <body>
     <div class="frame">
@@ -88,11 +92,12 @@
         
         <div class="div-wrapper">
           <div class="text-wrapper">
-            <button class="gerarPdf" onclick="download()">PDF</button>
+            <button class="gerarPdf" onclick="downloadPDF()">PDF</button>
           </div>
         </div>
       </div>
     </div>
+
 
     <script src="js/main.js"></script>
 

@@ -1,5 +1,4 @@
 
-
 document.getElementById('filterForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const id = document.getElementById('nome').value;
@@ -11,7 +10,19 @@ let chart;
 
 //função que cria o gráfico
 function initializeChart() {
+    //console.log("abriu");
     const ctx = document.getElementById('ambientesChart').getContext('2d');
+
+    const bgColor = {
+        id: 'bgcolor',
+        beforeDraw: (chart, options) => {
+            const { ctx, width, height } = chart; 
+            ctx.fillStyle = '#f1f1f1';
+            ctx.fillRect(0, 0, width, height);
+            ctx.restore();
+        }
+    }
+
     if (!chart) {
         chart = new Chart(ctx, {
             type: 'line',
@@ -65,7 +76,8 @@ function initializeChart() {
                         }
                     }
                 }
-            }
+            },
+            plugins: [bgColor]
         });
     }
 }
@@ -109,37 +121,21 @@ function updateChartData(chart, data) {
     chart.update();
 }
 
-//função que usa o quickchart para obter uma imagem do grafico
-function getChartUrl() {
-    const chartConfig = {
-        type: 'line',
-        data: chart.data,
-        options: chart.options
-    };
 
-    const url = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chartConfig))}`;
-    return url;
-}
 
-//função que gera o pdf com o backend
-function generatePdf() {
-    const select = document.getElementById('nome'); // Obtém o elemento select
-    const chartName = select.options[select.selectedIndex].text;
-    const chartUrl = getChartUrl();
-    window.open(`http://localhost:3000/pdf?chartUrl=${encodeURIComponent(chartUrl)}&chartName=${encodeURIComponent(chartName)}`);
-}
+function downloadPDF(){
+    const pdfChart = document.getElementById('ambientesChart');
+    const pdfChartImage = pdfChart.toDataURL('image/jpeg', 1);
 
-function download(){
-    const imageLink = document.createElement('a');
-    const canvas = document.getElementById('ambientesChart');
-    imageLink.download = 'Grafico.png';
-    imageLink.href = canvas.toDataURL('image/png', 1);
-    imageLink.click();
-    //window.open(imageLink);
-    //document.write('<img src= " ' +imageLink+ ' "/>');
-    //console.log(imageLink.href);
+    let pdf = new jsPDF('landscape');
+    pdf.setFontSize(20);
+    pdf.addImage(pdfChartImage, 'JPEG', 30, 30, 230, 100);
+    pdf.save('teste.pdf');
 
 
 }
 // Inicializa o gráfico ao carregar a página
 window.onload = initializeChart;
+
+
+

@@ -127,10 +127,36 @@ function downloadPDF(){
     const pdfChart = document.getElementById('ambientesChart');
     const pdfChartImage = pdfChart.toDataURL('image/jpeg', 1);
 
-    let pdf = new jsPDF('landscape');
-    pdf.setFontSize(20);
-    pdf.addImage(pdfChartImage, 'JPEG', 30, 30, 230, 100);
-    pdf.save('teste.pdf');
+    const Install = './img/Logo_Install.png';
+    const Nutriza = './img/Logo_Install.png';
+
+        let pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: 'a4'
+    });
+
+    const select = document.getElementById('nome');
+
+    const indice = select.selectedIndex;
+    const Ambiente = select.options[indice].text;
+
+    const date = new Date().toISOString().slice(0, 10); // Data atual no formato YYYY-MM-DD
+
+    const title = `Relatório Temperatura e Umidade - ${Ambiente} - Dia: ${date}`;
+
+
+    pdf.setFontSize(15);
+
+    pdf.text(title, 10,10);
+
+
+
+    pdf.addImage(pdfChartImage, 'PNG', 35, 35, 230, 100);
+    pdf.text('_________________________________________________________________________________________', 15,180);
+    pdf.text('Validação Garantia da Qualidade', 107,190);
+
+    pdf.save( 'Relatório ' + Ambiente + ' ' + date +'.pdf');
 
 
 }

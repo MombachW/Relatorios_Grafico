@@ -4,4 +4,8 @@ Este projeto é uma aplicação web para gerar relatórios de temperatura e umid
 
 ## Estrutura do Projeto
 
-pm2 start server.js --name frontend-backend - pm 2 para o front
+- pm 2 para o front porta 8000:
+pm2 start server.js --name frontend
+
+- pm 2 para o backend porta 3000:
+pm2 start server.js --name API

@@ -36,13 +36,13 @@ function downloadPDF() {
   });
 
   pdf.setFontSize(15);
-  pdf.text(title, 10, 20);
+  pdf.text(title, 60, 20);
 
   getBase64ImageFromURL(InstallLogoPath, function(InstallLogo) {
-    pdf.addImage(InstallLogo, 'PNG', 10, 10, 30, 15);
+    pdf.addImage(InstallLogo, 'PNG', 5, 10, 50, 15);
 
     getBase64ImageFromURL(NutrizaLogoPath, function(NutrizaLogo) {
-      pdf.addImage(NutrizaLogo, 'PNG', 250, 10, 30, 15);
+      pdf.addImage(NutrizaLogo, 'PNG', 260, 10, 30, 15);
 
       pdf.addImage(pdfChartImage, 'PNG', 35, 35, 230, 100);
       pdf.text('_________________________________________________________________________________________', 15, 180);

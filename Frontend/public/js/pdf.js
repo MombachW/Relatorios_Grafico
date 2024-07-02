@@ -27,7 +27,8 @@ function downloadPDF() {
   const indice = select.selectedIndex;
   const Ambiente = select.options[indice].text;
   const date = new Date().toISOString().slice(0, 10);
-  const title = `Relatório Temperatura e Umidade - ${Ambiente} - Dia: ${date}`;
+  const title1 = `Relatório Temperatura e Umidade - ${Ambiente}`;
+  const data = `Dia: ${date}`;
 
   let pdf = new jsPDF({
     orientation: 'landscape',
@@ -36,7 +37,8 @@ function downloadPDF() {
   });
 
   pdf.setFontSize(15);
-  pdf.text(title, 60, 20);
+  pdf.text(title1, 60, 17);
+  pdf.text(data, 60, 22);
 
   getBase64ImageFromURL(InstallLogoPath, function(InstallLogo) {
     pdf.addImage(InstallLogo, 'PNG', 5, 10, 50, 15);
@@ -44,9 +46,10 @@ function downloadPDF() {
     getBase64ImageFromURL(NutrizaLogoPath, function(NutrizaLogo) {
       pdf.addImage(NutrizaLogo, 'PNG', 260, 10, 30, 15);
 
-      pdf.addImage(pdfChartImage, 'PNG', 35, 35, 230, 100);
-      pdf.text('_________________________________________________________________________________________', 15, 180);
-      pdf.text('Validação Garantia da Qualidade', 107, 190);
+      pdf.addImage(pdfChartImage, 'PNG', 23, 35, 251, 130);
+      pdf.text('Observações:_____________________________________________________________________________', 15, 178);
+      pdf.text('_________________________________________________________________________________________', 15, 193);
+      pdf.text('Validação Garantia da Qualidade', 107, 200);
 
       pdf.save('Relatório ' + Ambiente + ' ' + date + '.pdf');
     });
